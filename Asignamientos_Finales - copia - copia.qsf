@@ -1,0 +1,112 @@
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16F484C6
+set_global_assignment -name TOP_LEVEL_ENTITY Top_SuperProyecto
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+
+set_global_assignment -name VHDL_FILE adquisicion_tcs3200.vhd
+set_global_assignment -name VHDL_FILE clasificador_rgb_calibrado.vhd
+set_global_assignment -name VHDL_FILE deco_7seg_color.vhd
+set_global_assignment -name VHDL_FILE Proyecto_TCS3200_Calibrado.vhd
+set_global_assignment -name VHDL_FILE TriggerGen.vhd
+set_global_assignment -name VHDL_FILE counter.vhd
+set_global_assignment -name VHDL_FILE distance_calculation.vhd
+set_global_assignment -name VHDL_FILE display_decoder.vhd
+set_global_assignment -name VHDL_FILE HCSR04.vhd
+set_global_assignment -name VHDL_FILE controlador_sg90_base.vhd
+set_global_assignment -name VHDL_FILE top_servos_opuestos.vhd
+set_global_assignment -name VHDL_FILE Control_Cinta_Motor.vhd
+set_global_assignment -name VHDL_FILE Top_SuperProyecto.vhd
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+# Reloj 50 MHz
+set_location_assignment PIN_G21 -to clk_50mhz
+
+# LEDs Verdes LEDG[9:0]
+set_location_assignment PIN_B1 -to ledg[9]
+set_location_assignment PIN_B2 -to ledg[8]
+set_location_assignment PIN_C2 -to ledg[7]
+set_location_assignment PIN_C1 -to ledg[6]
+set_location_assignment PIN_E1 -to ledg[5]
+set_location_assignment PIN_F2 -to ledg[4]
+set_location_assignment PIN_H1 -to ledg[3]
+set_location_assignment PIN_J3 -to ledg[2]
+set_location_assignment PIN_J2 -to ledg[1]
+set_location_assignment PIN_J1 -to ledg[0]
+
+# Switches SW[9:0]
+set_location_assignment PIN_D2 -to sw_vista_display
+set_location_assignment PIN_E4 -to sw_canal_tcs[1]
+set_location_assignment PIN_E3 -to sw_canal_tcs[0]
+set_location_assignment PIN_H7 -to sw_modo_auto
+set_location_assignment PIN_J7 -to sw_servo2_man
+set_location_assignment PIN_G5 -to sw_servo1_man
+set_location_assignment PIN_G4 -to sw_vel_motor[1]
+set_location_assignment PIN_H6 -to sw_vel_motor[0]
+set_location_assignment PIN_H5 -to sw_activar_motor
+set_location_assignment PIN_J6 -to rst_n
+
+# Conector J5 (GPIO_1) -> HC-SR04 (Pines 2 y 4)
+set_location_assignment PIN_AA20 -to us_trigger
+set_location_assignment PIN_AB20 -to us_echo
+
+# Conector J5 (GPIO_1) -> TCS3200 (Pines 5, 6, 7, 8 y 9)
+set_location_assignment PIN_AA19 -to tcs_s0
+set_location_assignment PIN_AB19 -to tcs_s1
+set_location_assignment PIN_AB18 -to tcs_s2
+set_location_assignment PIN_AA18 -to tcs_s3
+set_location_assignment PIN_AA17 -to tcs_out
+
+# Conector J5 (GPIO_1) -> Servos SG90 (Pines 13 y 14)
+set_location_assignment PIN_Y17 -to pwm_servo1
+set_location_assignment PIN_W17 -to pwm_servo2
+
+# Conector J5 (GPIO_1) -> Motor DC TB6612 (Pines 15, 16, 17 y 18)
+set_location_assignment PIN_U15 -to pin_pwm
+set_location_assignment PIN_T15 -to pin_dir1
+set_location_assignment PIN_W15 -to pin_dir2
+set_location_assignment PIN_V15 -to pin_standby
+
+# Displays 7 Segmentos HEX0..HEX3
+set_location_assignment PIN_E11 -to hex0[0]
+set_location_assignment PIN_F11 -to hex0[1]
+set_location_assignment PIN_H12 -to hex0[2]
+set_location_assignment PIN_H13 -to hex0[3]
+set_location_assignment PIN_G12 -to hex0[4]
+set_location_assignment PIN_F12 -to hex0[5]
+set_location_assignment PIN_F13 -to hex0[6]
+
+set_location_assignment PIN_A13 -to hex1[0]
+set_location_assignment PIN_B13 -to hex1[1]
+set_location_assignment PIN_C13 -to hex1[2]
+set_location_assignment PIN_A14 -to hex1[3]
+set_location_assignment PIN_B14 -to hex1[4]
+set_location_assignment PIN_E14 -to hex1[5]
+set_location_assignment PIN_A15 -to hex1[6]
+
+set_location_assignment PIN_D15 -to hex2[0]
+set_location_assignment PIN_A16 -to hex2[1]
+set_location_assignment PIN_B16 -to hex2[2]
+set_location_assignment PIN_E15 -to hex2[3]
+set_location_assignment PIN_A17 -to hex2[4]
+set_location_assignment PIN_B17 -to hex2[5]
+set_location_assignment PIN_F14 -to hex2[6]
+
+set_location_assignment PIN_B18 -to hex3[0]
+set_location_assignment PIN_F15 -to hex3[1]
+set_location_assignment PIN_A19 -to hex3[2]
+set_location_assignment PIN_B19 -to hex3[3]
+set_location_assignment PIN_C19 -to hex3[4]
+set_location_assignment PIN_D19 -to hex3[5]
+set_location_assignment PIN_G15 -to hex3[6]
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
